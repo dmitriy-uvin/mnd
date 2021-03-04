@@ -1,5 +1,6 @@
 import numpy as np
 from random import uniform
+import time
 
 # ------------------------------
 MIN, MAX = 0, 20
@@ -12,10 +13,15 @@ X0 = np.empty(3)  # X0 - масив нульових рівнів для кож�
 DX = np.empty(3)  # DX - масив інтервалів зміни фактора
 XNormalized = np.empty((8, 3), dtype=float)  # масив нормалізованих значень факторів
 
+startTime = time.time()
 # генерація плану експерименту(усіх точнок x)(випадкові числа)
 for i in range(8):
     for j in range(3):
         X[i, j] = uniform(MIN, MAX)
+
+endTime = time.time()
+print("--- %s seconds ---" % (endTime - startTime))
+
 # обчислення значень функції відгуків
 for i in range(8):
     Y[i] = a0 + a1 * X[i, 0] + a2 * X[i, 1] + a3 * X[i, 2]
