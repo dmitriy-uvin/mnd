@@ -100,6 +100,9 @@ class RomanovskyCriterion:
             elif self.m >= 21 and self.use_max:
                 print('M too big, we will available maximum')
                 self.m = 20
+            elif self.m >= 21 and not self.use_max:
+                print('M too big. Exit!')
+                exit()
         return max(self.r_uv) <= self.romanovsky_coef_value
 
     def execute(self):
