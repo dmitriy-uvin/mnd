@@ -3,6 +3,7 @@ import random
 from numpy.linalg import solve
 from scipy.stats import f, t
 from functools import partial
+import time
 
 x_range = [(-25, -5), (15, 50), (-25, -15)]
 x_aver_max = (-5 + 50 + -15) / 3
@@ -174,4 +175,13 @@ def execute(n, m):
         print('Математична модель не адекватна експериментальним даним')
 
 
-execute(4, 4)
+amount = 100
+totalTime = 0
+
+for iteration in range(100):
+    startTime = time.time()
+    execute(4, 4)
+    endTime = time.time()
+    totalTime += (endTime - startTime)
+
+print("Average execution time " + str(totalTime / amount) + " s")
