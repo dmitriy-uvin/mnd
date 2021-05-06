@@ -3,6 +3,7 @@ import numpy as np
 import sklearn.linear_model as lm
 from scipy.stats import f, t
 from numpy.linalg import solve
+import time
 
 
 
@@ -289,7 +290,12 @@ def linear(n, m):
     print('\nТабличне значення критерій Стьюдента:\n', student_cr_table)
     print('Розрахункове значення критерій Стьюдента:\n', student_t)
     res_student_t = [temp for temp in student_t if temp > student_cr_table]
+    start_time = time.time()
     final_coefficients = [B[student_t.index(i)] for i in student_t if i in res_student_t]
+    end_time = time.time()
+    total_time = start_time - end_time
+    if total_time > 0.1:
+        print('Модель неадекватна!') 
     print('Коефіцієнти {} статистично незначущі.'.
           format([i for i in B if i not in final_coefficients]))
 
