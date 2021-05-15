@@ -7,11 +7,11 @@ from scipy.stats import f, t
 m = 3
 n = 15
 
-# варіант 201
-x1min = -10
-x1max = 50
-x2min = -20
-x2max = 40
+# варіант 224
+x1min = -20
+x1max = 15
+x2min = 25
+x2max = 45
 x3min = -20
 x3max = -15
 
