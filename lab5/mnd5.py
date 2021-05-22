@@ -163,18 +163,17 @@ def kriteriy_fishera(y, y_aver, y_new, n, m, d):
 
 
 def check(X, Y, B, n, m):
+    start = time()
     print('\n\tПеревірка рівняння:')
     f1 = m - 1
     f2 = n
     f3 = f1 * f2
     q = 0.05
 
-    ### табличні значення
     student = partial(t.ppf, q=1 - q)
     t_student = student(df=f3)
 
     G_kr = cohren(f1, f2)
-    ###
 
     y_aver = [round(sum(i) / len(i), 3) for i in Y]
     print('\nСереднє значення y:', y_aver)
@@ -215,7 +214,7 @@ def check(X, Y, B, n, m):
     F_p = kriteriy_fishera(Y, y_aver, y_new, n, m, d)
 
     fisher = partial(f.ppf, q=0.95)
-    f_t = fisher(dfn=f4, dfd=f3)  # табличне знач
+    f_t = fisher(dfn=f4, dfd=f3)
     print('\nПеревірка адекватності за критерієм Фішера')
     print('Fp =', F_p)
     print('F_t =', f_t)
@@ -223,6 +222,8 @@ def check(X, Y, B, n, m):
         print('Математична модель адекватна експериментальним даним')
     else:
         print('Математична модель не адекватна експериментальним даним')
+    end = time()
+    print('Пройшло часу: ' + str(end - start))
 
 
 def main(n, m):
